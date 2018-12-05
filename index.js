@@ -6,6 +6,8 @@ var http = require('http');
 var pm = new PlayMusic();
 var config = JSON.parse(fs.readFileSync("config.json"));
 
+var port = process.env.PORT || 1337;
+
 http.createServer(function (req, res) {
   var allSongs = [];
 
@@ -61,8 +63,8 @@ http.createServer(function (req, res) {
 
   }); // pm.init ends
   
-}).listen(8080, () => {
-  console.log('Server started at port: 8080');
+}).listen(port, () => {
+  console.log('Server started at port: %d', port);
 }); // http.createServer ends
 
 
